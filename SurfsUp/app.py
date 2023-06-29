@@ -173,10 +173,9 @@ def start_end(start, end):
     # range is <start> to <end>
      #Catch wrong formats
     dates = [x[0] for x in session.query(measurement.date)]
-    if start in dates and end in dates:     
+    if start in dates and end in dates and end > start:     
         #make a selector for min, max, and avg
         active_sel = [
-            measurement.date,
             func.min(measurement.tobs), 
             func.max(measurement.tobs), 
             func.avg(measurement.tobs)
