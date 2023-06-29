@@ -67,11 +67,13 @@ def home():
             <li>You can also input this manually:  /api/v1.0/tobs</li>
         </ul> 
 
-    <p>Start Date:<p>
-        <form action="/api/v1.0/<start>" method="GET">
-        <input type="text" name="start">
-        <input type="submit" value="Submit">
-
+   <p>You can also check the average, maximum, and minimum tob by using the following routes:</p>
+        <ul>
+            <li>/api/v1.0/(start)</li>
+            <li>/api/v1.0/(start)/(end)</li>
+        </ul>
+    <p>Replace (start) with a beginning date and it will calculate using the data from that date until</br>
+    the most recent data, unless specified with (end)
 
     '''
     return(html)
@@ -198,14 +200,10 @@ def start_end(start, end):
     else:
         return(f'Invalid date.</br>' 
                f'Please make sure that the dates are in </br>'
-               f'YYYY-MM-DD format and are between 2010-01-01 to 2017-08-23.')
+               f'YYYY-MM-DD format and are between 2010-01-01 to 2017-08-23.</br>'
+               f'End should be more recent than start date </br>'
+               )
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-# TODOS
-# Finish Homepage
-# Try and put links and inputs in the homepage
